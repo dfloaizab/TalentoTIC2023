@@ -121,17 +121,42 @@ print(f"lista filtrada con un ciclo:{lista_pares_ciclo}")
 # n%2 == 0 es el retorno de la función
 fun_es_par = lambda n: n%2 == 0
 #aquí se define directamente la función que será usada como filtro como una función lambda, anónima
-lista_filtrada_v3 = list(filter( lambda n: n%2 == 0 ,lista_numeros   ))
+lista_filtrada_v3 = list(filter(lambda n: n%2 == 0,lista_numeros))
 
 print(fun_es_par(654654))
 
 #ejercicio 1: uso de función filter y funciones lambda
 #filtre la lista de números para los múltiplos de 3:
 
+def mult_3(n):
+    return n%3 == 0
+
+#lista_mult_3 = list(  filter( mult_3   ,   lista_numeros ) )
+lista_mult_3 = list( filter (  lambda n: n%3 == 0  , lista_numeros))
+print(f"Lista de múltiplos de 3:{lista_mult_3}")
+
+#2. filtrar usando "list comprehension":
+# incorporar un iterador for a una definición de una lista
+lista_mult_3 = [n for n in lista_numeros if n%3 == 0]
+print(f"Lista filtrada con list comprehension:{lista_mult_3}")
 
 
-#usando "list comprehension":
+lista_nombres = ["Andrés","Angélica", "Carolina", "Carlos", "Valeria", "Diego", "Victoria","andrea"]
 
+lista_A = [ nombres for nombres in   lista_nombres if nombres.startswith("A") or nombres.startswith("a") ]
+lista_A2 = [ nombres for nombres in lista_nombres if nombres.__contains__("a")]
+print(lista_A)
+print(lista_A2)
 
+#FILTRADO DE LISTA DE OBJETOS CON LIST COMPREHENSION
+lista_prod_30 = [  prod for prod in lista_productos if prod["inv"] >= 30   ]
+print(lista_prod_30)
 
-#repaso de operaciones con datos y colecciones de datos en Python
+#Tarea 1: Lista de diccionarios, filtrado
+
+# 1. cree un pequeño dataset con datos de libros (titulo, autor, ISBN, 
+#    paginas, precio, categoria ("Ciencias","Literatura") ) como lista de diccionarios
+# 2. realizar los siguientes filtros usando filter y list comprehension:
+#    2.1 Libros con precio mayor a $45.000
+#    2.2 Libros de categoría "Literatura" con paginas > 500
+#    2.3 un filtro inventado por ud.
