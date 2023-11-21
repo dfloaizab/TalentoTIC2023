@@ -57,7 +57,7 @@ if __name__ == "__main__":
     #global education data
     #https://www.kaggle.com/datasets
     #https://www.kaggle.com/datasets/nelgiriyewithana/world-educational-data/
-    df_global_edu_data = pd.read_csv("Global_Education.csv",sep=",")
+    df_global_edu_data = pd.read_csv("Global_Education.csv",sep=",", encoding="utf-8",encoding_errors="")
     df_global_edu_data.info()
 
 
