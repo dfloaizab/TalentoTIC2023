@@ -22,5 +22,8 @@
 
 
 # (1) cargar dataframe desde el archivo plano
+#      datasets de prueba: 
+#            https://github.com/dfloaizab/TalentoTIC2023/tree/main/Semana1/sampleDatasets/COVID clinical trials.csv
+#            https://github.com/dfloaizab/TalentoTIC2023/blob/main/Semana1/sampleDatasets/police.csv        
 # (2)  identificar los errores presentes, de acuerdo a su tipo
 # (3)  corregirlos
