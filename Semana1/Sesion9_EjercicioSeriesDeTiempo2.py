@@ -37,13 +37,15 @@ print(df_crimes_sub.info())
 #filtrar por distrito:
 #df_filt1 = df_crimes_sub[ df_crimes_sub["Neighborhood"] == "Westfield"   ]
 #df_filt1.info()
-
+df_crimes_sub.fillna(value=0)
 #Convertir a una tabla pivote (donde se construya el índice de la tabla a partir de la info temporal):
 # pivot_table permite valores duplicados a partir del índice:
 # pivot no permite valores duplicados
-df_crimes_pivot = df_crimes_sub.pivot_table(index=["datetime"], columns="Location",values="Total Incidents")
+df_crimes_pivot = df_crimes_sub.pivot_table(index=["datetime"], columns=["District"],values="Total Incidents",aggfunc="sum",fill_value=0)
 
-print(df_crimes_pivot.head())
+
+
+print(df_crimes_pivot.head(100))
 
 #continura el ejercicio...
 
@@ -51,4 +53,7 @@ print(df_crimes_pivot.head())
 
 
 #visualización de datos muestreados en una frecuencia distinta
-
+fig, axes=plt.subplots(1,2)
+df_crimes_pivot.resample("M").sum().plot(kind="bar",ax=axes[0], rot=0)
+df_crimes_pivot.resample("W").sum().plot(kind="bar",ax=axes[1], rot=0)
+plt.show()
